@@ -1,0 +1,85 @@
+<div class="container mt-5">
+<div class="row">
+    <div class="col-md-3">
+    <div class="card text-white bg-danger mb-3" (click)="selectColor('red')" [class.selected]="selectedColor === 'red'">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Rojo</span>
+        <button class="btn btn-primary btn-sm" (click)="toggleInfo('red')">Info</button>
+        </div>
+        <div class="card-body">
+        <ul id="red-info" [hidden]="!redInfoVisible">
+            <li>Respira tras apertura vía aérea</li>
+            <li>FR >30 rpm</li>
+            <li>NO Pulso radial</li>
+            <li>NO obedece órdenes sencillas</li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <div class="card text-white bg-warning mb-3" (click)="selectColor('yellow')" [class.selected]="selectedColor === 'yellow'">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Amarillo</span>
+        <button class="btn btn-primary btn-sm" (click)="toggleInfo('yellow')">Info</button>
+        </div>
+        <div class="card-body">
+        <ul id="yellow-info" [hidden]="!yellowInfoVisible">
+            <li>Respira <30 rpm </li>
+            <li>NO Pulso radial</li> 
+            <li>NO obedece órdenes verbales</li>
+            <li>NO PUEDE CAMINAR</li>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <div class="card text-white bg-success mb-3" (click)="selectColor('green')" [class.selected]="selectedColor === 'green'">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Verde</span>
+        <button class="btn btn-primary btn-sm" (click)="toggleInfo('green')">Info</button>
+        </div>
+        <div class="card-body">
+        <ul id="green-info" [hidden]="!greenInfoVisible">
+            <li>Paciente camina</li> 
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+    <div class="card text-white bg-dark mb-3" (click)="selectColor('black')" [class.selected]="selectedColor === 'black'">
+        <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Negro</span>
+        <button class="btn btn-primary btn-sm" (click)="toggleInfo('black')">Info</button>
+        </div>
+        <div class="card-body">
+        <ul id="black-info" [hidden]="!blackInfoVisible">
+            <li>NO respira tras apertura vía aérea</li> 
+        </ul>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col">
+    <div class="dropdown-wrapper card p-3" [class.selected]="isPrioritySelected">
+        <label class="form-label">Seleccionar si el paciente tiene prioridad Q</label>
+        <select class="form-select" (change)="selectPriority($event)">
+        <option selected disabled>Selecciona una opción Qx</option>
+        <option value=""></option>
+        <option value="QxA">QxA</option>
+        <option value="QxB">QxB</option>
+        <option value="QxC">QxC</option>
+        </select>
+    </div>
+    </div>
+    <div class="col">
+    <div class="dropdown-wrapper card p-3" [class.selected]="isCAPSelected">
+        <label class="form-label">Seleccionar si el paciente tiene Criterio Alta Prioridad</label>
+        <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="capCheckbox" (change)="toggleCAP($event)">
+        <label class="form-check-label" for="capCheckbox"> CAP </label>
+        </div>
+    </div>
+    </div>
+</div>
+</div>

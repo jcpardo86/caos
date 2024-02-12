@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <h2>Administración de Fármacos</h2>
+    <table class="table">
+        <!-- Encabezado de la tabla -->
+        <thead>
+            <tr>
+                <th>Principio Activo</th>
+                <th>Vía de Administración</th>
+                <th>Dosis</th>
+                <th>Unidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+            <!-- Iteración sobre cada administración de fármaco -->
+            <tr *ngFor="let administracion of farmacos; let i = index">
+                <!-- Columna para el principio activo -->
+                <td>
+                    <!-- Desplegable para seleccionar el principio activo -->
+                    <select class="form-select" [(ngModel)]="administracion.principioActivo" (change)="seleccionarFarmaco(administracion)">
+                        <option selected disabled>Seleccione un fármaco</option>
+                        <option *ngFor="let farmaco of farmaco" [value]="farmaco.principioActivo">{{ farmaco.principioActivo }}</option>
+                    </select>
+                </td>
+                <!-- Columna para la vía de administración -->
+                <td>
+                    <select class="form-select" [(ngModel)]="administracion.viaAdministracion">
+                        <ng-container *ngIf="administracion.principioActivo">
+                            <ng-container *ngFor="let farmaco of farmaco">
+                                <ng-container *ngIf="farmaco.principioActivo === administracion.principioActivo">
+                                    <option *ngFor="let via of farmaco.viaAdministracion" [value]="via">{{ via }}</option>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </select>
+                </td>
+                <!-- Columna para la dosis -->
+                <td><input type="text" class="form-control" [(ngModel)]="administracion.dosisInicial"></td>
+                <!-- Columna para la unidad -->
+                <td>
+                    <select class="form-select" [(ngModel)]="administracion.unidad">
+                        <ng-container *ngIf="administracion.principioActivo">
+                            <ng-container *ngFor="let farmaco of farmaco">
+                                <ng-container *ngIf="farmaco.principioActivo === administracion.principioActivo">
+                                    <option *ngFor="let unidad of farmaco.unidad" [value]="unidad">{{ unidad }}</option>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </select>
+                    
+                </td>
+                <!-- Columna para las acciones (botón de confirmar administración) -->
+                <td>
+                    <button class="btn btn-primary mr-2" (click)="confirmarAdministracion(i)">Confirmar Administración</button>
+                    <button class="btn btn-primary" (click)="eliminarAdministracion(i)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Botón para agregar una nueva administración de fármaco -->
+    <button class="btn btn-success" (click)="agregarAdministracion()">+</button>
+</div>
