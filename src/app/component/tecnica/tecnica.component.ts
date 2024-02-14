@@ -7,13 +7,13 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './tecnica.component.html',
-  styleUrls: ['./tecnica.component.css'] // Corrección: 'styleUrls' en lugar de 'styleUrl'
+  styleUrls: ['./tecnica.component.css']
 })
 export class TecnicaComponent {
   tecnicas: any[] = [];
 
-  // Definir el array de técnicas
-  tecnica = [
+  // Definir el array de todas las opciones disponibles de técnicas
+  opcionesTecnica = [
     {
       nombreTecnica: 'Técnica 1',
       detalle: 'Detalle de la Técnica 1'
@@ -33,7 +33,7 @@ export class TecnicaComponent {
     this.agregarTecnica(); // Agrega una técnica inicialmente
   }
 
-  // Función para agregar una nueva técnica
+  // Función para agregar una nueva técnica a la lista de técnicas seleccionadas
   agregarTecnica() {
     this.tecnicas.push({
       nombreTecnica: '',
@@ -46,15 +46,17 @@ export class TecnicaComponent {
     console.log('Técnica confirmada: ', this.tecnicas[index]);
   }
 
+  // Función para eliminar una técnica de la lista de técnicas seleccionadas
+  eliminarTecnica(index: number) {
+    this.tecnicas.splice(index, 1);
+  }
+
   // Función para seleccionar una técnica y actualizar el detalle correspondiente
   seleccionarTecnica(index: number) {
     const selectedTecnica = this.tecnicas[index].nombreTecnica;
-    const matchingTecnica = this.tecnica.find(t => t.nombreTecnica === selectedTecnica);
+    const matchingTecnica = this.opcionesTecnica.find(t => t.nombreTecnica === selectedTecnica);
     if (matchingTecnica) {
       this.tecnicas[index].detalle = matchingTecnica.detalle;
     }
-  }
-  eliminarTecnica(index: number) {
-    this.tecnicas.splice(index, 1);
   }
 }

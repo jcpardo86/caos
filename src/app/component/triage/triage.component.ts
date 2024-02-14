@@ -45,10 +45,25 @@ export class TriageComponent {
     console.log('Color seleccionado:', this.selectedColor); // Puedes hacer cualquier otra lógica aquí
   }
   selectPriority(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    this.isPrioritySelected = !!target.value; // Verificar si se ha seleccionado una opción
-    console.log('Prioridad seleccionada:', target.value);
-  }
+    const target = event.target as HTMLInputElement;
+    this.selectedPriority = target.value; // Almacenar la prioridad seleccionada
+    
+    // Verificar si hay algún checkbox seleccionado
+    const checkboxes: HTMLInputElement[] = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+    let isAnyChecked = false;
+    
+    checkboxes.forEach((checkbox: HTMLInputElement) => {
+        if (checkbox.checked) {
+            isAnyChecked = true;
+        }
+    });
+
+    // Establecer la propiedad isPrioritySelected basada en si hay algún checkbox seleccionado
+    this.isPrioritySelected = isAnyChecked;
+
+    console.log('Prioridad seleccionada:', this.selectedPriority);
+}
+
 // Función para manejar la selección de CAP
   toggleCAP(event: Event) {
     const target = event.target as HTMLInputElement;

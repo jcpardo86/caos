@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Columna para el formulario (ocupará 50% del ancho) -->
+        <div class="col-md-12">
+            <div class="container bg-secondary shadow p-3 mb-5 bg-body rounded">
+                <h2 class="text-center">Filiación</h2>
+                <form (ngSubmit)="grabarDatos()" #formulario="ngForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="genero" class="form-label">Género</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" id="hombre" value="hombre" [(ngModel)]="datos.genero" required>
+                                <label class="form-check-label" for="hombre">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" id="mujer" value="mujer" [(ngModel)]="datos.genero" required>
+                                <label class="form-check-label" for="mujer">Mujer</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="tarjeta" class="form-label">Nº Tarjeta</label>
+                            <input type="number" class="form-control" id="tarjeta" name="tarjeta" [(ngModel)]="datos.tarjeta" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="datos.nombre" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="datos.edad" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Grabar</button>
+                    <button type="button" class="btn btn-secondary">Leer QR</button>
+                </form>
+            </div>
+        </div>
+        <!-- Columna para el otro componente (ocupará el restante 50% del ancho) -->
+        <div class="col-md-6">
+            <!-- Aquí va el otro componente -->
+        </div>
+    </div>
+</div>

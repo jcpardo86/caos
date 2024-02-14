@@ -1,3 +1,13 @@
-<app-triage></app-triage>
-<app-farmaco></app-farmaco>
+<!-- <div class="container-fluid d-flex justify-content-center">
+    <div class="row">
+        <div class="col-md-4">
+            <app-filiacion></app-filiacion>
+        </div>
+        <div class="col-md-8">
+            <app-triage></app-triage>
+        </div>
+    </div>
+</div> -->
+<app-farmaco (confirmarAdministracionEvent)="manejarConfirmacionAdministracion($event)"></app-farmaco>
+<app-registro [registros]="registros"></app-registro>
 <app-tecnica></app-tecnica>

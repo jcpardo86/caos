@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2>Registro Paciente</h2>    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Evento</th>
+                <th>Acción</th>
+                <th>Realizada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr @For=registro of registros">
+                <td>{{ registro.evento }}</td>
+                <td>{{ registro.accion }}</td>
+                <td>{{ registro.realizada }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

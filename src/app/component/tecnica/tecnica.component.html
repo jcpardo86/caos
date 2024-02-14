@@ -16,23 +16,21 @@
                 <!-- Columna para el nombre de la técnica -->
                 <td>
                     <!-- Desplegable para seleccionar la técnica -->
-                    <select class="form-select" [(ngModel)]="tecnicas[i].nombreTecnica" (change)="seleccionarTecnica(i)">
+                    <select class="form-select" [(ngModel)]="tecnica.nombreTecnica" (change)="seleccionarTecnica(i)">
                         <option selected disabled>Seleccione una técnica</option>
-                        <option *ngFor="let t of tecnica" [value]="t.nombreTecnica">{{ t.nombreTecnica }}</option>
+                        <option *ngFor="let t of opcionesTecnica" [value]="t.nombreTecnica">{{ t.nombreTecnica }}</option>
                     </select>
                 </td>
                 <!-- Columna para el detalle -->
-                <td><input type="text" class="form-control" [(ngModel)]="tecnicas[i].detalle"></td>
+                <td><input type="text" class="form-control" [(ngModel)]="tecnica.detalle"></td>
                 <!-- Columna para las acciones (botón de confirmar técnica) -->
                 <td>
                     <button class="btn btn-primary mr-2" (click)="confirmarTecnica(i)">Confirmar Técnica</button>
                     <button class="btn btn-primary" (click)="eliminarTecnica(i)">Eliminar</button>
-
                 </td>
             </tr>
         </tbody>
     </table>
     <!-- Botón para agregar una nueva técnica -->
     <button class="btn btn-success" (click)="agregarTecnica()">+</button>
-
 </div>
