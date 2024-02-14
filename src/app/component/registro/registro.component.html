@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr @For=registro of registros">
+            <tr *ngFor="let registro of registros">
                 <td>{{ registro.evento }}</td>
                 <td>{{ registro.accion }}</td>
                 <td>{{ registro.realizada }}</td>
